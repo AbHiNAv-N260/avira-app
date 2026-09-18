@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AVIRA | Menstrual Cycle</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand" aria-label="AVIRA home">
+          <span class="brand-mark">A</span>
+          <span class="brand-text">VIRA</span>
+        </a>
+
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="phtest.html">pH Test</a>
+          <a href="records.html">Records</a>
+          <a href="centres.html">Centres</a>
+          <a href="cycle.html" class="active">Cycle</a>
+          <a href="index.html#faq">FAQ</a>
+        </nav>
+
+        <a href="phtest.html" class="header-cta">Take the test</a>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <div class="container">
+        <section class="page-hero reveal">
+          <p class="eyebrow eyebrow-dark">Menstrual cycle</p>
+          <h1>Understand your cycle and patterns.</h1>
+          <p>Track recurring phases, symptoms, and notes to keep better awareness of your health and predict upcoming changes.</p>
+        </section>
+
+        <section class="cycle-grid">
+          <div class="panel-card reveal cycle-panel">
+            <div class="progress-ring" id="cycleProgressRing">
+              <div class="progress-center">
+                <strong id="cycleDayNumber">24</strong>
+                <span>Days</span>
+              </div>
+            </div>
+
+            <form id="cycleForm" class="cycle-form">
+              <div class="field-group">
+                <label for="lastPeriodInput">Last period date</label>
+                <input id="lastPeriodInput" class="form-control" type="date" />
+              </div>
+
+              <div class="field-group">
+                <label for="cycleLengthInput">Average cycle length</label>
+                <input id="cycleLengthInput" class="form-control" type="number" min="20" max="45" value="28" />
+              </div>
+
+              <div class="field-group cycle-form-row">
+                <div>
+                  <label for="entryDateInput">Tracking date</label>
+                  <input id="entryDateInput" class="form-control" type="date" />
+                </div>
+                <div>
+                  <label for="flowInput">Flow</label>
+                  <span class="select-wrap">
+                    <select id="flowInput" class="form-control">
+                      <option value="None">None</option>
+                      <option value="Light">Light</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Heavy">Heavy</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+
+              <div class="field-group cycle-form-row">
+                <div>
+                  <label for="moodInput">Mood</label>
+                  <span class="select-wrap">
+                    <select id="moodInput" class="form-control">
+                      <option value="Steady">Steady</option>
+                      <option value="Low">Low</option>
+                      <option value="Anxious">Anxious</option>
+                      <option value="Irritable">Irritable</option>
+                      <option value="Positive">Positive</option>
+                    </select>
+                  </span>
+                </div>
+                <div>
+                  <label for="energyInput">Energy</label>
+                  <span class="select-wrap">
+                    <select id="energyInput" class="form-control">
+                      <option value="Low">Low</option>
+                      <option value="Moderate" selected>Moderate</option>
+                      <option value="High">High</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+
+              <div class="field-group" style="margin-top: 1rem;">
+                <label>Symptoms</label>
+                <div class="symptom-list">
+                  <label><input type="checkbox" value="Fatigue" /> Fatigue</label>
+                  <label><input type="checkbox" value="Cramping" /> Cramping</label>
+                  <label><input type="checkbox" value="Mood shifts" /> Mood shifts</label>
+                  <label><input type="checkbox" value="Bloating" /> Bloating</label>
+                  <label><input type="checkbox" value="Headache" /> Headache</label>
+                  <label><input type="checkbox" value="Breast tenderness" /> Breast tenderness</label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label for="cycleNotes">Notes</label>
+                <textarea id="cycleNotes" class="form-control" rows="3" placeholder="Share how you feel today..."></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button class="primary-btn" id="saveCycleBtn" type="submit">Save cycle entry</button>
+              </div>
+            </form>
+          </div>
+
+          <aside class="panel-card reveal cycle-panel">
+            <h3>Current phase</h3>
+            <div class="result-banner cycle-result-banner">
+              <span class="phase-pill" id="cyclePhaseBadge">Ovulation</span>
+              <strong id="cyclePhaseTitle">Ovulation window</strong>
+              <span id="cyclePhaseNote">Your cycle is trending steadily.</span>
+            </div>
+
+            <ul class="summary-list">
+              <li><span>Cycle stage</span><strong id="cycleStageValue">Ovulation</strong></li>
+              <li><span>Next period</span><strong id="nextPeriodValue">Calculating...</strong></li>
+              <li><span>Fertile window</span><strong id="fertileWindowValue">Calculating...</strong></li>
+              <li><span>Days to next period</span><strong id="daysToPeriodValue">—</strong></li>
+              <li><span>Symptoms today</span><strong id="symptomsTodayValue">0 tracked</strong></li>
+              <li><span>Care reminder</span><strong id="careReminderValue">Review pattern</strong></li>
+            </ul>
+
+            <div class="cycle-timeline" aria-label="Cycle phase timeline">
+              <div class="cycle-timeline-head"><h4>Cycle timeline</h4><span id="cycleProgressLabel">Day 1 of 28</span></div>
+              <div class="cycle-timeline-bar">
+                <span class="timeline-segment menstrual"></span>
+                <span class="timeline-segment follicular"></span>
+                <span class="timeline-segment ovulation"></span>
+                <span class="timeline-segment luteal"></span>
+                <span class="cycle-today-marker" id="cycleTodayMarker"></span>
+              </div>
+              <div class="cycle-timeline-labels"><span>Period</span><span>Follicular</span><span>Ovulation</span><span>Luteal</span></div>
+            </div>
+
+            <div class="cycle-history-panel">
+              <h4>Recent entries</h4>
+              <ul id="cycleHistoryList" class="cycle-history-list"></ul>
+            </div>
+          </aside>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand brand-footer">
+            <span class="brand-mark">A</span>
+            <span class="brand-text">VIRA</span>
+          </a>
+          <p>From a simple colour change to informed healthcare.</p>
+        </div>
+        <div class="social-links" aria-label="Social accounts">
+          <button class="social-icon" type="button" data-provider="google" aria-label="Google">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 12.23c0-.7-.06-1.37-.18-2.02H12v3.82h5.39a4.61 4.61 0 0 1-2 3.02v2.5h3.25c1.9-1.75 2.96-4.33 2.96-7.32z" fill="#4285F4"/><path d="M12 22c2.7 0 4.96-.9 6.61-2.45l-3.25-2.5c-.9.6-2.06.96-3.36.96-2.58 0-4.77-1.74-5.55-4.08H.92v2.6A10 10 0 0 0 12 22z" fill="#34A853"/><path d="M6.45 19.89A6 6 0 0 1 6 17.1V14.5H2.72A10 10 0 0 0 2 12c0-1.62.39-3.15 1.08-4.5H6.45v2.63A5.97 5.97 0 0 1 12 8.75c1.18 0 2.24.45 3.07 1.33l2.38-2.38A8.97 8.97 0 0 0 12 2.5 10 10 0 0 0 2.72 7.5H6.45A6 6 0 0 1 12 5.62c1.66 0 3.16.58 4.39 1.72l2.65-2.65A9.92 9.92 0 0 0 12 2c-5.52 0-10 4.48-10 10 0 1.74.4 3.37 1.12 4.82L6.45 19.89z" fill="#FBBC05" opacity="0.3"/><path d="M12 5.62c1.66 0 3.16.58 4.38 1.72l2.64-2.64A9.92 9.92 0 0 0 12 2 10 10 0 0 0 2.72 7.5H6.45A6 6 0 0 1 12 5.62z" fill="#EA4335"/><path d="M12 8.75c.99 0 1.9.34 2.63.96l2.17-2.17A5.94 5.94 0 0 0 12 5.62a6 6 0 0 0-5.55 3.38H2.72A10 10 0 0 1 12 8.75z" fill="#FBBC05" opacity="0.6"/></svg>
+          </button>
+          <button class="social-icon fb" type="button" data-provider="facebook" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.4 22v-8.3h2.8l.4-3.2h-3.2V7.2c0-.9.3-1.6 1.7-1.6h1.8V2.7c-.3 0-1.4-.1-2.7-.1-2.7 0-4.5 1.6-4.5 4.6v2.6H7.6v3.2h2.8V22h2.9z" fill="currentColor"/></svg>
+          </button>
+          <button class="social-icon apple" type="button" data-provider="apple" aria-label="Apple">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.8 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.5-.2-2.8.9-3.5.9-.7 0-1.8-.9-3-.9-1.5 0-2.9.9-3.7 2.2-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.7 2.3 3 2.2 1.2-.1 1.7-.8 3.2-.8 1.5 0 2 .8 3.2.8 1.3 0 2.1-1.1 3-2.2.9-1.4 1.3-2.8 1.3-2.9-.1-.1-2.9-1.1-4.8-3.2zm-2.7-6.5c.6-.7 1.1-1.7 1-2.7-.9.1-2 .6-2.7 1.3-.6.7-1.1 1.7-1 2.7.9.1 2.1-.5 2.7-1.3z" fill="currentColor"/></svg>
+          </button>
+        </div>
+        <div class="footer-meta">
+          <p>© 2026 AVIRA. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

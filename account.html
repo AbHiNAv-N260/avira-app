@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account | AVIRA</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand" aria-label="AVIRA home">
+          <span class="brand-mark">A</span>
+          <span class="brand-text">VIRA</span>
+        </a>
+
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="phtest.html">pH Test</a>
+          <a href="records.html">Records</a>
+          <a href="centres.html">Centres</a>
+          <a href="cycle.html">Cycle</a>
+          <a href="index.html#faq">FAQ</a>
+        </nav>
+
+        <a href="phtest.html" class="header-cta">Take the test</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero account-hero">
+        <div class="container narrow-content reveal">
+          <p class="eyebrow eyebrow-dark">Your AVIRA account</p>
+          <h1 id="accountHeading">Welcome back.</h1>
+          <p id="accountIntro">Keep your health journey connected across every AVIRA feature.</p>
+        </div>
+      </section>
+
+      <section class="account-section">
+        <div class="container account-layout">
+          <article class="panel-card account-profile reveal" id="accountProfile">
+            <div class="account-avatar" id="accountAvatar" aria-hidden="true">A</div>
+            <div class="account-details">
+              <span class="card-label">Profile</span>
+              <h2 id="accountName">Your account</h2>
+              <p id="accountEmail">Sign in to view your account details.</p>
+              <p class="account-provider" id="accountProvider"></p>
+            </div>
+          </article>
+
+          <article class="panel-card account-actions reveal">
+            <span class="card-label">Account access</span>
+            <h2 id="accountActionTitle">Sign in to continue</h2>
+            <p id="accountActionText">Log in to save readings, review your records, and continue your health journey.</p>
+            <div class="account-button-row">
+              <button class="primary-btn" id="accountLoginBtn" type="button">Log in</button>
+              <button class="secondary-btn hidden" id="accountLogoutBtn" type="button">Log out</button>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AVIRA | Health Records</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand" aria-label="AVIRA home">
+          <span class="brand-mark">A</span>
+          <span class="brand-text">VIRA</span>
+        </a>
+
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="phtest.html">pH Test</a>
+          <a href="records.html" class="active">Records</a>
+          <a href="centres.html">Centres</a>
+          <a href="cycle.html">Cycle</a>
+          <a href="index.html#faq">FAQ</a>
+        </nav>
+
+        <a href="phtest.html" class="header-cta">Take the test</a>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <div class="container">
+        <section class="page-hero reveal">
+          <p class="eyebrow eyebrow-dark">Health record</p>
+          <h1>Keep your health journey organised.</h1>
+          <p>Store readings, notes, and clinician follow-ups in one secure place while your backend is connected later.</p>
+        </section>
+
+        <section class="panel-card reveal">
+          <div class="records-summary">
+            <div class="mini-stat">
+              <span>Tracked entries</span>
+              <strong id="recordCountValue">0</strong>
+            </div>
+            <div class="mini-stat">
+              <span>Average pH</span>
+              <strong id="recordAverageValue">—</strong>
+            </div>
+            <div class="mini-stat">
+              <span>Last note</span>
+              <strong id="recordLatestValue">—</strong>
+            </div>
+          </div>
+
+          <div class="search-box">
+            <input id="recordSearchInput" class="form-control" type="text" aria-label="Search records" />
+            <span class="select-wrap records-filter-select">
+              <select id="recordTypeFilter" class="form-control" aria-label="Filter records by type">
+                <option value="all">All types</option>
+                <option value="ph">pH readings</option>
+                <option value="other">Other records</option>
+              </select>
+            </span>
+            <button class="secondary-btn" id="exportRecordsBtn" type="button">Export CSV</button>
+            <button class="primary-btn" id="addRecordBtn" type="button">Add record</button>
+          </div>
+
+          <table class="record-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>pH</th>
+                <th>Notes</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="recordTableBody">
+              <tr>
+                <td colspan="5">Loading records...</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand brand-footer">
+            <span class="brand-mark">A</span>
+            <span class="brand-text">VIRA</span>
+          </a>
+          <p>From a simple colour change to informed healthcare.</p>
+        </div>
+        <div class="social-links" aria-label="Social accounts">
+          <button class="social-icon" type="button" data-provider="google" aria-label="Google">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 12.23c0-.7-.06-1.37-.18-2.02H12v3.82h5.39a4.61 4.61 0 0 1-2 3.02v2.5h3.25c1.9-1.75 2.96-4.33 2.96-7.32z" fill="#4285F4"/><path d="M12 22c2.7 0 4.96-.9 6.61-2.45l-3.25-2.5c-.9.6-2.06.96-3.36.96-2.58 0-4.77-1.74-5.55-4.08H.92v2.6A10 10 0 0 0 12 22z" fill="#34A853"/><path d="M6.45 19.89A6 6 0 0 1 6 17.1V14.5H2.72A10 10 0 0 0 2 12c0-1.62.39-3.15 1.08-4.5H6.45v2.63A5.97 5.97 0 0 1 12 8.75c1.18 0 2.24.45 3.07 1.33l2.38-2.38A8.97 8.97 0 0 0 12 2.5 10 10 0 0 0 2.72 7.5H6.45A6 6 0 0 1 12 5.62c1.66 0 3.16.58 4.39 1.72l2.65-2.65A9.92 9.92 0 0 0 12 2c-5.52 0-10 4.48-10 10 0 1.74.4 3.37 1.12 4.82L6.45 19.89z" fill="#FBBC05" opacity="0.3"/><path d="M12 5.62c1.66 0 3.16.58 4.38 1.72l2.64-2.64A9.92 9.92 0 0 0 12 2 10 10 0 0 0 2.72 7.5H6.45A6 6 0 0 1 12 5.62z" fill="#EA4335"/><path d="M12 8.75c.99 0 1.9.34 2.63.96l2.17-2.17A5.94 5.94 0 0 0 12 5.62a6 6 0 0 0-5.55 3.38H2.72A10 10 0 0 1 12 8.75z" fill="#FBBC05" opacity="0.6"/></svg>
+          </button>
+          <button class="social-icon fb" type="button" data-provider="facebook" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.4 22v-8.3h2.8l.4-3.2h-3.2V7.2c0-.9.3-1.6 1.7-1.6h1.8V2.7c-.3 0-1.4-.1-2.7-.1-2.7 0-4.5 1.6-4.5 4.6v2.6H7.6v3.2h2.8V22h2.9z" fill="currentColor"/></svg>
+          </button>
+          <button class="social-icon apple" type="button" data-provider="apple" aria-label="Apple">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.8 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.5-.2-2.8.9-3.5.9-.7 0-1.8-.9-3-.9-1.5 0-2.9.9-3.7 2.2-1.6 2.7-.4 6.8 1.1 9 .8 1.1 1.7 2.3 3 2.2 1.2-.1 1.7-.8 3.2-.8 1.5 0 2 .8 3.2.8 1.3 0 2.1-1.1 3-2.2.9-1.4 1.3-2.8 1.3-2.9-.1-.1-2.9-1.1-4.8-3.2zm-2.7-6.5c.6-.7 1.1-1.7 1-2.7-.9.1-2 .6-2.7 1.3-.6.7-1.1 1.7-1 2.7.9.1 2.1-.5 2.7-1.3z" fill="currentColor"/></svg>
+          </button>
+        </div>
+        <div class="footer-meta">
+          <p>© 2026 AVIRA. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
