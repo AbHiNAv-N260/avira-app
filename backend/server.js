@@ -17,6 +17,16 @@ const configuredOrigins = (process.env.FRONTEND_ORIGIN || 'http://localhost:8000
   .map((origin) => origin.trim())
   .filter(Boolean);
 
+const isAllowedOrigin = (origin) => {
+  if (!origin || configuredOrigins.includes(origin)) return true;
+  try {
+    const parsedOrigin = new URL(origin);
+    return parsedOrigin.hostname.endsWith('.onrender.com');
+  } catch (error) {
+    return false;
+  }
+};
+
 if (!JWT_SECRET || JWT_SECRET.length < 32) {
   throw new Error('JWT_SECRET must be configured with at least 32 characters.');
 }
@@ -33,8 +43,7 @@ const db = new Database(path.join(dataDirectory, 'data.db'));
 
 app.use(cors({
   origin(origin, callback) {
-    if (!origin || configuredOrigins.includes(origin)) return callback(null, true);
-    return callback(new Error('Origin not allowed by CORS.'));
+    return callback(null, isAllowedOrigin(origin));
   }
 }));
 app.use(express.json({ limit: '50kb' }));
