@@ -21,8 +21,14 @@ if (!JWT_SECRET || JWT_SECRET.length < 32) {
   throw new Error('JWT_SECRET must be configured with at least 32 characters.');
 }
 
-const dataDirectory = process.env.DATA_DIR || __dirname;
-fs.mkdirSync(dataDirectory, { recursive: true });
+let dataDirectory = process.env.DATA_DIR || __dirname;
+try {
+  fs.mkdirSync(dataDirectory, { recursive: true });
+} catch (error) {
+  dataDirectory = path.join('/tmp', 'avira-data');
+  fs.mkdirSync(dataDirectory, { recursive: true });
+  console.warn(`DATA_DIR is not writable; using ${dataDirectory} for this instance.`);
+}
 const db = new Database(path.join(dataDirectory, 'data.db'));
 
 app.use(cors({
